@@ -15,5 +15,16 @@ const self = module.exports = {
         game.started = false,
         game.answer_status = false,
         game.option_status = false
-    }
+    },
+
+    displayQuestion :(game, time) => {
+        if(time === 'repeated') {
+            console.log(`Your Next Question is : `)
+        } else {
+            console.log(`Your Question is : `)
+        }
+        const def = game.definitions[0];
+        const syn = game.synonyms[0] ? game.synonyms[0] : null;
+        printer.displayQuestion(def,syn);
+    }    
 }

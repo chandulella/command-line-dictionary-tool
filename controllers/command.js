@@ -66,5 +66,22 @@ Word Of The Day is :- ${word}
     printer.printDefinitions(data);
   },
 
+  fetchGamePlayDetails : async(game) => {
+    let randomWord = await commandHelper.fetchrandomWord();
+    let def = await commandHelper.definitions(randomWord);
+    let syn = await commandHelper.synonyms(randomWord);
+    let ant = await commandHelper.antonyms(randomWord);
+    let finalResult = await commandHelper.matchFinalResult(def,syn,ant);
 
+    if(finalResult.definitions.length > 1 ) {
+      game.word = randomWord;
+      game.definitions = finalResult.definitions;
+      game.synonyms = finalResult.synonyms;
+      game.antonyms = finalResult.antonyms;
+    } else {
+      await self.fetchGamePlayDetails(game);
+    }
+
+  }
+  
 });

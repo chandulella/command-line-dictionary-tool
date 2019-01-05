@@ -4,15 +4,17 @@ const printer = require("./../constant/output.js");
 
 const self = module.exports = {
 
-    displayQuestion : async(game)=>{
+    displayQuestion : async(game,time ='')=>{
         GameplayHelper.setGameplayAnswerMode(game);
-        game.word = 'chandu'
+        await Command.fetchGamePlayDetails(game);
+        GameplayHelper.displayQuestion(game , time)
+        console.log(game.word)
     },
     checkRoute : async (input,game) => {
         if(game.answer_status) {
             if(game.word === input) {
                 printer.correctAnswer();
-                self.displayQuestion(game);
+                self.displayQuestion(game,'repeated');
             } else {
                 printer.wrongAnswer();
                 GameplayHelper.setGameplayOptionMode(game);
@@ -29,6 +31,7 @@ const self = module.exports = {
                     break;
                 case '3' :
                     GameplayHelper.setGameplayQuitMode(game);
+                    printer.printGameOutput(game);
                     printer.gameEnded();
                     break;
                 default :

@@ -103,6 +103,47 @@ Press 1 for RETRY
 Press 2 for HINT
 Press 3 for Quit
 `);
+    },
+
+    displayQuestion : (def,syn) => {
+        if(def) {
+            console.log(`
+
+Definiton       : ${def} 
+                    
+                    `)
+        } else if(syn) {
+            console.log(`
+
+Synonym         : ${syn} 
+                    
+                    `)
+        } else if (def && syn) {
+            console.log(`
+
+Definition      : ${def}
+Synonym         : ${syn} 
+                    
+                    `)
+        }
+
+        console.log(`Waiting for your answer`)
+        
+    },
+    printGameOutput : (game)  => {
+        console.log(`
+**********  Correct Answer is : ${game.word}    ***********
+`)
+        console.log(`
+--------   Definitions    :    ---------- `)
+        game.definitions.forEach(element => console.log(`${element}`))
+        console.log(`
+--------   Synonyms    :    ----------`)
+        game.synonyms.length > 0 ? game.synonyms.forEach(element => console.log(`${element}`)) : console.log(`Sorry No Synonyms are available`);
+        console.log(`
+--------   Antonyms    :    ----------`)
+        game.antonyms.length > 0 ? game.antonyms.forEach(element => console.log(`${element}`)) : console.log(`Sorry No Antonyms are available`);
+
     }
 
     

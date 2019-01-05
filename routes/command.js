@@ -29,19 +29,19 @@ module.exports = function(input,game) {
         Command.fullDetails(word);
         break;
       case "play":
-      if(input[2]){
-        console.log(error.printCorrectInput);
-      } else 
+        if(input[2]){
+          console.log(error.printCorrectInput);
+        } else {
           printer.gameStarted();
           Gameplay.displayQuestion(game);
-      break;
+        }
         break;
       default:
-      if(input.length === 2){
-        Command.fullDetails(input[1]);
-      } else {
-        console.log(error.printCorrectInput);
-      }
+        if(input.length === 2){
+          Command.fullDetails(input[1]);
+        } else {
+          console.log(error.printCorrectInput);
+        }
     }
   }
 };

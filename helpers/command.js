@@ -67,4 +67,36 @@ const self = module.exports = {
         }
     },
 
+
+    matchFinalResult : (def,syn,ant) =>{
+        let definitions = [];
+        let synonyms = [];
+        let antonyms = [];
+
+        if(def.length) {
+            def.forEach(element => {
+                if(element.partOfSpeech) {
+                    definitions.push(element.text) 
+                }
+            })
+        } 
+
+        if(syn && syn.length > 0) {
+            syn[0].words.forEach(element => {
+                synonyms.push(element)
+            });
+        }
+
+        if(ant && ant.length > 0) {
+            ant[0].words.forEach(element => {
+                antonyms.push(element)
+            });
+        }
+
+        return {
+            definitions : definitions,
+            synonyms : synonyms,
+            antonyms : antonyms
+        }
+    }
 }

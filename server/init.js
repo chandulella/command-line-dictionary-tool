@@ -8,7 +8,10 @@ let game = {
     started : false,
     answer_status : false,
     option_status : false,
-    word : ''
+    word : '',
+    definitions : [],
+    synonyms : [],
+    antonyms : []
 };
 
 process.stdin.setEncoding('utf8');
