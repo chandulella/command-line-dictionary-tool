@@ -67,5 +67,43 @@ Sorry, No Examples Found
         }
     },
 
+
+    gameStarted : () => {
+        console.log(`
+Let's Get This Game Started        
+------------------------------------------------------------------------
+Need to find a word for a given question
+question can be listed with Definition and Synonym/Antonym
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Please be patient while fetching Question
+        `)
+    },
+    gameEnded : () => {
+        console.log(`
+You Ended the game        
+------------------------------------------------------------------------
+click ./dict play to play again .
+We are looking for you.
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        `)
+    },
+
+    correctAnswer : () => {
+        console.log(`Hurray ! Your Answer is Correct
+----------------------------------------------------
+Please wait for few seconds to fetch question
+`)
+    },
+    wrongAnswer : () => {
+        console.log(`OOPS ! Your Answer is Wrong
+Please choose below options
+Press 1 for RETRY
+Press 2 for HINT
+Press 3 for Quit
+`);
+    }
+
     
 }

@@ -2,7 +2,14 @@ require('dotenv').config();
 require("./../constant/help.js");
 
 let error = require("./../constant/error.js");
+let Gameplay = require("./../controllers/gameplay.js");
 
+let game = {
+    started : false,
+    answer_status : false,
+    option_status : false,
+    word : ''
+};
 
 process.stdin.setEncoding('utf8');
 process.stdin.on("data", input => {
@@ -11,8 +18,13 @@ process.stdin.on("data", input => {
 
 function fetchResult(input) {
     let checked = checkEnteredInput(input);
-        checked && require('./../routes/command.js')(input);
+    if(!game.started) {
+        checked && require('./../routes/command.js')(input,game);
         checked || console.log(error.printCorrectInput);
+    } else {
+        Gameplay.checkRoute(input,game);
+    }
+
 }
 
 function checkEnteredInput(input) {

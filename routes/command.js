@@ -1,5 +1,7 @@
 let Command = require("./../controllers/command.js");
+let Gameplay = require("./../controllers/gameplay.js");
 let error = require("./../constant/error.js");
+const printer = require("./../constant/output.js");
 
 module.exports = function(input,game) {
   input = input.split(" ");
@@ -27,7 +29,12 @@ module.exports = function(input,game) {
         Command.fullDetails(word);
         break;
       case "play":
-        console.log("play")
+      if(input[2]){
+        console.log(error.printCorrectInput);
+      } else 
+          printer.gameStarted();
+          Gameplay.displayQuestion(game);
+      break;
         break;
       default:
       if(input.length === 2){
