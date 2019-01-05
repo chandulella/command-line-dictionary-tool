@@ -1,0 +1,22 @@
+{
+  "name": "command-line-dictionary-tool",
+  "version": "1.0.0",
+  "description": "Command Line Dictionary Tool for displaying words definitions,synonyms,antonyms,examples.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandulella/command-line-dictionary-tool.git"
+  },
+  "author": "Lella Chandu Sai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chandulella/command-line-dictionary-tool/issues"
+  },
+  "homepage": "https://github.com/chandulella/command-line-dictionary-tool#readme",
+  "dependencies": {
+    "dotenv": "^6.2.0"
+  }
+}
