@@ -1,3 +1,6 @@
+let Command = require("./../controllers/command.js");
+let error = require("./../constant/error.js");
+
 module.exports = function(input,game) {
   input = input.split(" ");
   let name = input[0];
@@ -5,29 +8,33 @@ module.exports = function(input,game) {
   let word = input[2] ? input[2] : null;
 
   if (input.length === 1) {
-    console.log("word of the day")
-} else {
+    Command.wordOfTheDay();
+  } else {
     switch (type) {
       case "def":
-        console.log("definition")
+        Command.definitions(word);
         break;
       case "syn":
-        console.log("synonym")
+        Command.synonyms(word);
         break;
       case "ant":
-        console.log("antonym")
+        Command.antonyms(word);
         break;
       case "ex":
-        console.log("example")
+        Command.examples(word);
         break;
       case "dict":
-        console.log("full dictionary")
+        Command.fullDetails(word);
         break;
       case "play":
         console.log("play")
         break;
       default:
-        console.log("full dictionary")
+      if(input.length === 2){
+        Command.fullDetails(input[1]);
+      } else {
+        console.log(error.printCorrectInput);
+      }
     }
   }
 };
