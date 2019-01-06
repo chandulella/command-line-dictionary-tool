@@ -144,7 +144,14 @@ Synonym         : ${syn}
 --------   Antonyms    :    ----------`)
         game.antonyms.length > 0 ? game.antonyms.forEach(element => console.log(`${element}`)) : console.log(`Sorry No Antonyms are available`);
 
-    }
+    },
 
+    displayHint :(type, hint) => {
+        console.log(`
+Hint for this question is
+-------------------------------------------------------------
+${type}     :   ${hint}      
+        `)
+    }
     
 }

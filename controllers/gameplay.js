@@ -3,7 +3,7 @@ const Command = require("./../controllers/command.js");
 const printer = require("./../constant/output.js");
 
 const self = module.exports = {
-
+    
     displayQuestion : async(game,time ='')=>{
         GameplayHelper.setGameplayAnswerMode(game);
         await Command.fetchGamePlayDetails(game);
@@ -27,7 +27,8 @@ const self = module.exports = {
                     `)
                     break;
                 case '2' :
-                    console.log('hint')
+                    GameplayHelper.setGameplayAnswerMode(game);
+                    self.checkHintRoute(game);
                     break;
                 case '3' :
                     GameplayHelper.setGameplayQuitMode(game);
@@ -40,5 +41,32 @@ const self = module.exports = {
             }
 
         }
+    },
+
+    checkHintRoute : (game) => {
+        let randomNumber = Math.floor(Math.random() * 4) + 1;
+        console.log("Random Number is : ",randomNumber);
+        let word = game.word;
+        switch(randomNumber) {
+            case 1 :
+                console.log(game.definitions.length)
+                let definitions = game.definitions;
+                GameplayHelper.displayHintDefinition(definitions, word);
+                break;
+            case 2 :
+                console.log(game.synonyms.length)
+                let synonyms = game.synonyms;
+                GameplayHelper.displayHintSynonym(synonyms, word);
+                break;
+            case 3 :
+                console.log(game.antonyms.length)
+                let antonyms = game.antonyms;
+                GameplayHelper.displayHintAntonym(antonyms, word);
+                break;
+            case 4 :
+                GameplayHelper.displayHintJumbleWord(word);
+                break;
+        }
+        
     }
 }
