@@ -8,11 +8,12 @@ const self = module.exports = {
         GameplayHelper.setGameplayAnswerMode(game);
         await Command.fetchGamePlayDetails(game);
         GameplayHelper.displayQuestion(game , time)
-        console.log(game.word)
+        // console.log("For Testing Purpose,Answer listed as below  : ",game.word,game.synonyms)
     },
     checkRoute : async (input,game) => {
         if(game.answer_status) {
-            if(game.word === input) {
+            let answer = GameplayHelper.checkAnswer(input,game)
+            if(answer) {
                 printer.correctAnswer();
                 self.displayQuestion(game,'repeated');
             } else {
@@ -45,21 +46,17 @@ const self = module.exports = {
 
     checkHintRoute : (game) => {
         let randomNumber = Math.floor(Math.random() * 4) + 1;
-        console.log("Random Number is : ",randomNumber);
         let word = game.word;
         switch(randomNumber) {
             case 1 :
-                console.log(game.definitions.length)
                 let definitions = game.definitions;
                 GameplayHelper.displayHintDefinition(definitions, word);
                 break;
             case 2 :
-                console.log(game.synonyms.length)
                 let synonyms = game.synonyms;
                 GameplayHelper.displayHintSynonym(synonyms, word);
                 break;
             case 3 :
-                console.log(game.antonyms.length)
                 let antonyms = game.antonyms;
                 GameplayHelper.displayHintAntonym(antonyms, word);
                 break;

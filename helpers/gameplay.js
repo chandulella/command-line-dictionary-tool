@@ -90,5 +90,21 @@ const self = module.exports = {
             jumbledWord = jumbledWord + word[ele - 1]
         })
         return jumbledWord;
+    },
+    checkAnswer : (input,game) => {
+        let dummyArr = game;
+        let answersArr = [];
+        if(dummyArr.synonyms && dummyArr.synonyms.length > 1) {
+            answersArr = dummyArr.synonyms.slice(1,dummyArr.synonyms.length);
+            answersArr.push(game.word)
+        } else {
+            answersArr.push(dummyArr.word);
+        }
+        // console.log(answersArr)
+        if(answersArr.includes(input)){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

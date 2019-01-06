@@ -106,7 +106,14 @@ Press 3 for Quit
     },
 
     displayQuestion : (def,syn) => {
-        if(def) {
+        if (def && syn) {
+            console.log(`
+
+Definition      : ${def}
+Synonym         : ${syn} 
+                    
+                    `)
+        } else if(def) {
             console.log(`
 
 Definiton       : ${def} 
@@ -115,13 +122,6 @@ Definiton       : ${def}
         } else if(syn) {
             console.log(`
 
-Synonym         : ${syn} 
-                    
-                    `)
-        } else if (def && syn) {
-            console.log(`
-
-Definition      : ${def}
 Synonym         : ${syn} 
                     
                     `)
