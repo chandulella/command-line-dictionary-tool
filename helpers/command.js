@@ -63,7 +63,11 @@ const self = module.exports = {
             // console.log(response.data)
             return response;
         } catch (err) {
-            throw Error(err);
+            if(err && err.response && err.response.status === 403){
+                throw Error ('Ivalid API .Please check your API KEY')
+            } else {
+                throw Error('We are unable to fetch from Wordnik | Please check your Internet Connectivity')
+            }
         }
     },
 

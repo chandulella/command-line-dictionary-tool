@@ -60,6 +60,35 @@ const self = module.exports = {
         return arr[Math.floor(Math.random() * (arr.length-1)) + 1];
     },
     getJumbleWord : (word) => {
-        return word
+        const jumbledWord = self.splitWords(word);
+        return jumbledWord
+    },
+    splitWords: (data) => {
+        data = data.split(' ');
+        let answer = '';
+        for (let i = 0; i < data.length; i++) {
+            answer = answer + `${self.makeWordJumble(data[i])} `;
+        }
+        return answer
+    },
+    makeWordJumble: (word) => {
+        let length = word.length;
+        let randomIndexArr = [];
+        for (let i = 1; i <= length; i++) {
+            let rand = Math.floor((Math.random() * length) + 1);
+            if (randomIndexArr.indexOf(rand) == -1) {
+                randomIndexArr.push(rand);
+            }
+        }
+        let jumbledWord = '';
+        for (let i = 1; i <= length; i++) {
+            if (randomIndexArr.indexOf(i) == -1) {
+                randomIndexArr.unshift(i)
+            }
+        }
+        randomIndexArr.map((ele) => {
+            jumbledWord = jumbledWord + word[ele - 1]
+        })
+        return jumbledWord;
     }
 }
